@@ -69,8 +69,9 @@ export default class Avatar extends React.Component {
       isSameUser(this.props.currentMessage, messageToCompare) &&
       isSameDay(this.props.currentMessage, messageToCompare)
     ) {
+      const viewStyle = {...styles[this.props.position].container, ...this.props.containerStyle[this.props.position]};
       return (
-        <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+        <View style={viewStyle}>
           <GiftedAvatar
             avatarStyle={StyleSheet.flatten([
               styles[this.props.position].image,
@@ -80,14 +81,10 @@ export default class Avatar extends React.Component {
         </View>
       );
     }
-
+    const viewStyle = {...styles[this.props.position].container, ...styles[this.props.position][computedStyle], ...this.props.containerStyle[this.props.position]};
     return (
       <View
-        style={[
-          styles[this.props.position].container,
-          styles[this.props.position][computedStyle],
-          this.props.containerStyle[this.props.position],
-        ]}
+        style={viewStyle}
       >
         {this.renderAvatar()}
       </View>

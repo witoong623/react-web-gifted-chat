@@ -112,9 +112,9 @@ export default class Bubble extends React.Component {
     if (currentMessage.sent || currentMessage.received || currentMessage.pending) {
       return (
         <View style={styles.tickView}>
-          {currentMessage.sent && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
-          {currentMessage.received && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
-          {currentMessage.pending && <Text style={[styles.tick, this.props.tickStyle]}>🕓</Text>}
+          {currentMessage.sent && <Text style={{...styles.tick, ...this.props.tickStyle}}>✓</Text>}
+          {currentMessage.received && <Text style={{...styles.tick, ...this.props.tickStyle}}>✓</Text>}
+          {currentMessage.pending && <Text style={{...styles.tick, ...this.props.tickStyle}}>🕓</Text>}
         </View>
       );
     }
@@ -140,7 +140,7 @@ export default class Bubble extends React.Component {
       }
       return (
         <View style={styles.usernameView}>
-          <Text style={[styles.username, this.props.usernameStyle]}>~ {currentMessage.user.name}</Text>
+          <Text style={{...styles.username, ...this.props.usernameStyle}}>~ {currentMessage.user.name}</Text>
         </View>
       );
     }
@@ -156,14 +156,14 @@ export default class Bubble extends React.Component {
 
   render() {
     return (
-      <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+      <View style={{...styles[this.props.position].container, ...this.props.containerStyle[this.props.position]}}>
         <View
-          style={[
-            styles[this.props.position].wrapper,
-            this.props.wrapperStyle[this.props.position],
-            this.handleBubbleToNext(),
-            this.handleBubbleToPrevious(),
-          ]}
+          style={{
+            ...styles[this.props.position].wrapper,
+            ...this.props.wrapperStyle[this.props.position],
+            ...this.handleBubbleToNext(),
+            ...this.handleBubbleToPrevious(),
+          }}
         >
           <TouchableOpacity
             withoutFeedback
@@ -176,7 +176,7 @@ export default class Bubble extends React.Component {
               {this.renderMessageImage()}
               {this.renderMessageVideo()}
               {this.renderMessageText()}
-              <View style={[styles[this.props.position].bottom, this.props.bottomContainerStyle[this.props.position]]}>
+              <View style={{...styles[this.props.position].bottom, ...this.props.bottomContainerStyle[this.props.position]}}>
                 {this.renderUsername()}
                 {this.renderTime()}
                 {this.renderTicks()}

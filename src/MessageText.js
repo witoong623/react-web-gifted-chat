@@ -68,13 +68,13 @@ export default class MessageText extends React.Component {
   render() {
     const linkStyle = StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]);
     return (
-      <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+      <View style={{...styles[this.props.position].container, ...this.props.containerStyle[this.props.position]}}>
         <ParsedText
-          style={[
-            styles[this.props.position].text,
-            this.props.textStyle[this.props.position],
-            this.props.customTextStyle,
-          ]}
+          style={{
+            ...styles[this.props.position].text,
+            ...this.props.textStyle[this.props.position],
+            ...this.props.customTextStyle,
+          }}
           parse={[
             ...this.props.parsePatterns(linkStyle),
             { type: 'url', style: linkStyle, onPress: this.onUrlPress },

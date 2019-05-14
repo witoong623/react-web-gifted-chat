@@ -7,9 +7,9 @@ import Color from './Color';
 
 export default function SystemMessage({ currentMessage, containerStyle, wrapperStyle, textStyle }) {
   return (
-    <View style={[styles.container, containerStyle]}>
-      <View style={[styles.wrapper, wrapperStyle]}>
-        <Text style={[styles.text, textStyle]}>{currentMessage.text}</Text>
+    <View style={{...styles.container, ...containerStyle}}>
+      <View style={{...styles.wrapper, ...wrapperStyle}}>
+        <Text style={{...styles.text, ...textStyle}}>{currentMessage.text}</Text>
       </View>
     </View>
   );

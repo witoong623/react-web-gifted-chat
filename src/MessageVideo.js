@@ -12,7 +12,7 @@ export default function MessageVideo({
 }) {
   return (
     // eslint-disable-next-line no-use-before-define
-    <View style={[styles.container, containerStyle]}>
+    <View style={{...styles.container, ...containerStyle}}>
 {/* 
       <Video
         {...videoProps}

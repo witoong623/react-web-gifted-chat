@@ -98,6 +98,8 @@ export default class Message extends React.Component {
 
   render() {
     const sameUser = isSameUser(this.props.currentMessage, this.props.nextMessage);
+    const invertedStyle = this.props.inverted ? this.props.inverted : { marginBottom: 2 };
+
     return (
       <View>
         {this.renderDay()}
@@ -105,12 +107,12 @@ export default class Message extends React.Component {
           this.renderSystemMessage()
         ) : (
           <View
-            style={[
-              styles[this.props.position].container,
-              { marginBottom: sameUser ? 2 : 10 },
-              !this.props.inverted && { marginBottom: 2 },
-              this.props.containerStyle[this.props.position],
-            ]}
+            style={{
+              ...styles[this.props.position].container,
+              marginBottom: sameUser ? 2 : 10,
+              ...invertedStyle,
+              ...this.props.containerStyle[this.props.position],
+            }}
           >
             {this.props.position === 'left' ? this.renderAvatar() : null}
             {this.renderBubble()}

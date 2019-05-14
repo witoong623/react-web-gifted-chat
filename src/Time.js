@@ -14,8 +14,8 @@ export default function Time(
   context,
 ) {
   return (
-    <View style={[styles[position].container, containerStyle[position]]}>
-      <Text style={[styles[position].text, textStyle[position], timeTextStyle[position]]}>
+    <View style={{...styles[position].container, ...containerStyle[position]}}>
+      <Text style={{...styles[position].text, ...textStyle[position], ...timeTextStyle[position]}}>
         {moment(currentMessage.createdAt)
           .locale(context.getLocale())
           .format(timeFormat)}

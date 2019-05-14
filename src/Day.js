@@ -16,9 +16,9 @@ export default function Day(
 ) {
   if (!isSameDay(currentMessage, inverted ? previousMessage : nextMessage)) {
     return (
-      <View style={[styles.container, containerStyle]}>
+      <View style={{...styles.container, ...containerStyle}}>
         <View style={wrapperStyle}>
-          <Text style={[styles.text, textStyle]}>
+          <Text style={{...styles.text, ...textStyle}}>
             {moment(currentMessage.createdAt)
               .locale(context.getLocale())
               .format(dateFormat)

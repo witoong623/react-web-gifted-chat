@@ -44,7 +44,7 @@ export default class MessageImage extends React.Component {
       >
         <Image
           {...imageProps}
-          style={[styles.image, this.props.imageStyle]}
+          style={{...styles.image, ...this.props.imageStyle}}
           source={{ uri: currentMessage.image }}
         />
         {isOpen && (

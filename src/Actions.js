@@ -35,24 +35,27 @@ export default class Actions extends React.Component {
     if (this.props.icon) {
       return this.props.icon();
     }
+    const viewStyle = {...styles.wrapper, ...this.props.wrapperStyle};
+    const textStyle = {...styles.iconText, ...this.props.iconTextStyle};
+
     return (
-      <View style={[styles.wrapper, this.props.wrapperStyle]}>
-        <Text style={[styles.iconText, this.props.iconTextStyle]}>+</Text>
+      <View style={viewStyle}>
+        <Text style={textStyle}>+</Text>
       </View>
     );
   }
 
   render() {
+    const extractedStyle = {...this.props.containerStyle, ...styles.container};
     return (
       <TouchableOpacity
-        style={[styles.container, this.props.containerStyle]}
+        style={extractedStyle}
         onPress={this.props.onPressActionButton || this.onActionsPress}
       >
         {this.renderIcon()}
       </TouchableOpacity>
     );
   }
-
 }
 
 const styles = StyleSheet.create({

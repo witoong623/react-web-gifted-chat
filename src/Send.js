@@ -8,18 +8,21 @@ import TouchableOpacity from './TouchableOpacity';
 
 export default function Send({ text, containerStyle, onSend, children, textStyle, label, alwaysShowSend }) {
   if (alwaysShowSend || text.trim().length > 0) {
+    const touchStyle = {...styles.container, ...containerStyle};
+    const viewStyle = {...styles.text, ...textStyle};
+
     return (
       <TouchableOpacity
         testID="send"
         accessible
         accessibilityLabel="send"
-        style={[styles.container, containerStyle]}
+        style={touchStyle}
         onPress={() => {
           onSend({ text: text.trim() }, true);
         }}
         accessibilityTraits="button"
       >
-        <View>{children || <Text style={[styles.text, textStyle]}>{label}</Text>}</View>
+        <View>{children || <Text id="chat-send-message-button" style={viewStyle}>{label}</Text>}</View>
       </TouchableOpacity>
     );
   }
